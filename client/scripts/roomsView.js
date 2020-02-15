@@ -7,10 +7,13 @@ var RoomsView = {
     this.$button.click ( () => {
       var newRoom = prompt("Enter a room name.");
       Rooms.add(newRoom);
+      Rooms.currentRoom = newRoom;
+      App.initialize();
     });
 
     this.$select.change( () => {
       Rooms.currentRoom = this.$select.val();
+      MessagesView.render(App.currentState);
     });
 
     this.render(App.currentState);
@@ -20,6 +23,7 @@ var RoomsView = {
     for (var r of data.results) {
       Rooms.roomList.add(r.roomname);
     }
+    RoomsView.$select.empty();
     Rooms.roomList.forEach(RoomsView.renderRoom);
   },
 

@@ -7,6 +7,7 @@ var App = {
   currentState: {results: [{username: 'Error', text: 'Fetch request failed.'}]},
 
   initialize: function() {
+
     App.username = window.location.search.substr(10);
 
     App.startSpinner();
@@ -23,6 +24,7 @@ var App = {
       FormView.initialize();
       RoomsView.initialize();
       MessagesView.initialize();
+      RoomsView.$select.val(Rooms.currentRoom);
     });
   },
 

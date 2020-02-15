@@ -2,7 +2,7 @@ var Rooms = {
 
   roomList: new Set(),
 
-  currentRoom: 'outerSpace',
+  currentRoom: 'all',
 
   // takes room string, adds to server's rooms collection
   add: function (room) {
@@ -13,6 +13,7 @@ var Rooms = {
     };
 
     Parse.create(createRoomMsg);
+
   }
 
 };
