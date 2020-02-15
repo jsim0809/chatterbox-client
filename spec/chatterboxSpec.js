@@ -121,5 +121,13 @@ describe('chatterbox', function() {
 
       Parse.create.restore();
     });
+
+    it('should clear the field after submitting message', function() {
+      App.initialize();
+      $('#message').val('Why so many Mel Brooks quotes?');
+      $('form .submit').trigger('submit');
+      expect($('#message').val()).to.equal('');
+    });
+
   });
 });
