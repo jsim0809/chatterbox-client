@@ -4,6 +4,7 @@ var Friends = {
 
   toggleStatus: function (string) {
     this.friendsList.has(string) ? this.friendsList.delete(string) : this.friendsList.add(string);
+    MessagesView.render(App.currentState);
   }
 
 };

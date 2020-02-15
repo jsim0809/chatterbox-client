@@ -36,7 +36,11 @@ var MessagesView = {
   },
 
   renderMessage: function(message) {
-    this.$chats.append(MessageView.render(message));
+    if (Friends.friendsList.has(message.username)) {
+      this.$chats.append(MessageView.renderFriend(message));
+    } else {
+      this.$chats.append(MessageView.render(message));
+    }
   }
 
 };
