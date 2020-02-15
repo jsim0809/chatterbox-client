@@ -4,25 +4,25 @@ var App = {
 
   username: 'anonymous',
 
+  currentState: {results: [{username: 'Error', text: 'Fetch request failed.'}]},
+
   initialize: function() {
     App.username = window.location.search.substr(10);
 
-    FormView.initialize();
-    RoomsView.initialize();
-    MessagesView.initialize();
-
-    // Fetch initial batch of messages
     App.startSpinner();
+    // Fetch initial batch of messages
     App.fetch(App.stopSpinner);
-
   },
 
   fetch: function(callback = ()=>{}) {
+    // fetch takes a function
+    // It reads everything the server, then executes the function
     Parse.readAll((data) => {
-      // examine the response from the server request:
-      console.log(data);
-
+      App.currentState = data;
       callback();
+      FormView.initialize();
+      RoomsView.initialize();
+      MessagesView.initialize();
     });
   },
 

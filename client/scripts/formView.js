@@ -9,8 +9,28 @@ var FormView = {
   handleSubmit: function(event) {
     // Stop the browser from submitting the form
     event.preventDefault();
-    
-    console.log('click!');
+
+    // Pull the .val() of the message field
+    var msgString = $('#message').val();
+
+    // Make it into a message object with the current username attached
+    // Message format:
+    // {
+    //   username: 'Mel Brooks',
+    //   text: 'I didn\'t get a harumph outa that guy.!',
+    //   roomname: 'lobby'
+    // })
+    var newMsg = {
+      username: App.username,
+      text: msgString,
+      roomname: Rooms.currentRoom
+    };
+
+    // Run ajax (Parse.create) on that message to send it to the server.
+    Parse.create(newMsg);
+
+    // Clear the message field
+    $('#message').val('');
   },
 
   setStatus: function(active) {
