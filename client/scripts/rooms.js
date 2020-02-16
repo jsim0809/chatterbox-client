@@ -2,7 +2,7 @@ var Rooms = {
 
   roomList: new Set(),
 
-  currentRoom: 'all',
+  currentRoom: 'lobby',
 
   // takes room string, adds to server's rooms collection
   add: function (room) {

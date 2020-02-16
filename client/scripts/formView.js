@@ -27,10 +27,14 @@ var FormView = {
     };
 
     // Run ajax (Parse.create) on that message to send it to the server.
-    Parse.create(newMsg);
+    Parse.create(newMsg, () => {
+      // Clear the message field
+      $('#message').val('');
+      console.log('chatterbox: Message sent');
+      // Rerender the message box
+      // App.fetch(App.stopSpinner);
+    });
 
-    // Clear the message field
-    $('#message').val('');
   },
 
   setStatus: function(active) {

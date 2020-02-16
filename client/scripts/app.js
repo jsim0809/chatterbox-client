@@ -13,6 +13,8 @@ var App = {
     App.startSpinner();
     // Fetch initial batch of messages
     App.fetch(App.stopSpinner);
+
+
   },
 
   fetch: function(callback = ()=>{}) {
@@ -25,6 +27,8 @@ var App = {
       RoomsView.initialize();
       MessagesView.initialize();
       RoomsView.$select.val(Rooms.currentRoom);
+
+      // setTimeout(App.fetch, 5000, App.stopSpinner);
     });
   },
 
